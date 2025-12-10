@@ -40,7 +40,7 @@ A modern React frontend application for IP geolocation lookup with authenticatio
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/HarleyGotardo/frontend-geo.git
    cd frontend-geo
    ```
 
