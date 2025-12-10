@@ -22,7 +22,9 @@ const IPSearch = ({ onSearch, onClear, loading }) => {
   const validateForm = () => {
     const newErrors = {};
     
-    if (ipAddress.trim() && !validateIP(ipAddress.trim())) {
+    if (!ipAddress.trim()) {
+      newErrors.ip = 'Please enter an IP address';
+    } else if (!validateIP(ipAddress.trim())) {
       newErrors.ip = 'Please enter a valid IP address (IPv4 or IPv6)';
     }
     
@@ -38,11 +40,13 @@ const IPSearch = ({ onSearch, onClear, loading }) => {
     }
 
     const trimmedIp = ipAddress.trim();
-    onSearch(trimmedIp || null); // Pass null for empty input to get current location
+    onSearch(trimmedIp);
   };
 
   const handleInputChange = (value) => {
-    setIpAddress(value);
+    // Filter out invalid characters - allow numbers, letters a-f, dots, colons, and common IPv6 letters
+    const filteredValue = value.replace(/[^0-9a-fA-F.:]/g, '');
+    setIpAddress(filteredValue);
     setErrors(prev => ({ ...prev, ip: '' }));
   };
 
@@ -85,7 +89,7 @@ const IPSearch = ({ onSearch, onClear, loading }) => {
           <Button
             type="submit"
             loading={loading}
-            disabled={loading}
+            disabled={loading || !ipAddress.trim()}
             className="flex-1"
           >
             <Icon name="search" className="-ml-1 mr-2" />
@@ -130,10 +134,7 @@ const IPSearch = ({ onSearch, onClear, loading }) => {
         </div>
       </div>
 
-      <Alert variant="info" className="mt-4">
-        <strong>Tip:</strong> Leave the input empty and click "Search IP" to get your current location.
-      </Alert>
-    </Card>
+          </Card>
   );
 };
 

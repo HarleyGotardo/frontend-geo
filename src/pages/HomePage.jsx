@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useGeoLocation } from '../hooks/useGeoLocation';
 import toast from 'react-hot-toast';
@@ -11,21 +11,16 @@ import Card from '../components/ui/Card';
 
 const HomePage = () => {
   const { user, logout } = useAuth();
-  const { geoData, loading, error, fetchCurrentLocation, searchByIP, clearData, setGeoDataDirect } = useGeoLocation();
+  const { geoData, loading, error, searchByIP, clearData, setGeoDataDirect } = useGeoLocation();
   const [activeHistoryItemId, setActiveHistoryItemId] = useState(null);
 
-  // Load current user's location on mount
-  useEffect(() => {
-    fetchCurrentLocation();
-  }, [fetchCurrentLocation]);
-
+  
   const handleSearch = async (ipAddress) => {
     await searchByIP(ipAddress);
   };
 
   const handleClear = () => {
     clearData();
-    fetchCurrentLocation();
   };
 
   const handleHistoryItemClick = (item) => {
