@@ -8,7 +8,7 @@ const Input = ({
   containerClassName = '',
   ...props 
 }) => {
-  const baseClasses = 'block w-full px-3 py-2 border rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm';
+  const baseClasses = 'block w-full px-3 py-2 border rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-ring focus:border-input sm:text-sm';
   const errorClasses = error ? 'border-red-300' : 'border-gray-300';
   const inputClasses = `${baseClasses} ${errorClasses} ${icon ? 'pl-10' : ''} ${className}`;
 

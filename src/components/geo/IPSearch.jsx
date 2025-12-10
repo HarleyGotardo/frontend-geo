@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Button from '../ui/Button';
+import Card from '../ui/Card';
 import Input from '../ui/Input';
 import Alert from '../ui/Alert';
-import Card from '../ui/Card';
+import Icon from '../ui/Icon';
 
 const IPSearch = ({ onSearch, onClear, loading }) => {
   const [ipAddress, setIpAddress] = useState('');
@@ -52,9 +53,11 @@ const IPSearch = ({ onSearch, onClear, loading }) => {
   ];
 
   const searchIcon = (
-    <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-    </svg>
+    <img 
+      src="/image-logos/ip-address.png" 
+      alt="IP Address" 
+      className="h-5 w-5 flex-shrink-0"
+    />
   );
 
   return (
@@ -85,9 +88,7 @@ const IPSearch = ({ onSearch, onClear, loading }) => {
             disabled={loading}
             className="flex-1"
           >
-            <svg className="-ml-1 mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+            <Icon name="search" className="-ml-1 mr-2" />
             Search IP
           </Button>
           
@@ -97,9 +98,7 @@ const IPSearch = ({ onSearch, onClear, loading }) => {
             onClick={onClear}
             disabled={loading}
           >
-            <svg className="-ml-1 mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-            </svg>
+            <Icon name="refresh" className="-ml-1 mr-2" />
             Clear
           </Button>
         </div>
@@ -123,9 +122,7 @@ const IPSearch = ({ onSearch, onClear, loading }) => {
               disabled={loading}
               className="justify-start"
             >
-              <svg className="mr-1.5 h-3 w-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-              </svg>
+              <Icon name="link" size="xs" className="mr-1.5" />
               {sample.ip}
               <span className="ml-1 text-gray-400">({sample.label})</span>
             </Button>
